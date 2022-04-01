@@ -8,20 +8,25 @@ form.addEventListener("submit", handleFormSubmit);
 
 
 
-const readinglist = [];
 
 const handleFormSubmit = function(event){
   event.preventDefault();
-  const readingListItem = document.querySelector('ul');
-  readingListItem.textContent = `${event.target.title.value} ${event.target.author.value} ${event.target.category.value}`;
-  const newListItem = document.createElement('li');
-  newListItem.textContent = `${event.target.title.value} ${event.target.author.value} ${event.target.category.value}`;
-  const list = document.querySelector('ul');
-  list.appendChild(newListItem);
+  const readingListItem = document.querySelector('#reading-list');
+  const newListItem = createNewListItem(event);
+  event.target.reset();
+  
 };
 
-console.log(readinglist);
-
+const createNewListItem = function(form){
+  debugger;
+  const readingListItem = document.createElement('li');
+  const title = form.target.title.value;
+  const author = form.target.author.value;
+  const category = form.target.category.value;
+  readingListItem.textContent = `${title} ${author} ${category}`;
+  const list = document.querySelector('ul');
+  list.appendChild(readingListItem);
+};
 
 
 
